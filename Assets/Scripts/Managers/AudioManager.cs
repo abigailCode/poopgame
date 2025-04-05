@@ -1,16 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Xml.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 public class AudioManager : MonoBehaviour {
 
     public static AudioManager Instance;
-    [SerializeField] AudioSource _sfxSource;
     [SerializeField] AudioSource _musicSource;
-    [SerializeField] AudioSource _countdownSource;
+    AudioSource countdownSource;
 
     readonly Dictionary<string, AudioClip> _sfxClips = new();
     readonly Dictionary<string, AudioClip> _musicClips = new();
-    AudioClip _countdownClip;
+    float _sfxVolume = 0.8f;
 
     void Awake() {
         if (Instance == null) {
@@ -18,7 +19,6 @@ public class AudioManager : MonoBehaviour {
             DontDestroyOnLoad(gameObject);
             LoadSFXClips();
             LoadMusicClips();
-            _countdownClip = Resources.Load<AudioClip>("SFX/countdownSFX");
         } else Destroy(gameObject);
     }
 
@@ -33,6 +33,7 @@ public class AudioManager : MonoBehaviour {
         _sfxClips["fart1"] = Resources.Load<AudioClip>("SFX/SFX_Fart1");
         _sfxClips["fart2"] = Resources.Load<AudioClip>("SFX/SFX_Fart2");
         _sfxClips["fart3"] = Resources.Load<AudioClip>("SFX/SFX_Fart3");
+        _sfxClips["countdown"] = Resources.Load<AudioClip>("SFX/countdownSFX");
     }
 
     void LoadMusicClips() {
@@ -44,10 +45,18 @@ public class AudioManager : MonoBehaviour {
     }
 
     public void PlaySFX(string clipName) {
-        if (_sfxClips.ContainsKey(clipName)) {
-            _sfxSource.clip = _sfxClips[clipName];
-            _sfxSource.Play();
-        } else Debug.LogWarning($"The {clipName} AudioClip was not found in the sfxClips dict.");
+        StartCoroutine(PlaySFXCoroutine(_sfxClips[clipName]));
+    }
+
+    IEnumerator PlaySFXCoroutine(AudioClip sfxClip) {
+        AudioSource audioSource = gameObject.AddComponent<AudioSource>();
+        countdownSource = audioSource;
+        audioSource.clip = sfxClip;
+        audioSource.volume = _sfxVolume;
+        audioSource.Play();
+
+        yield return new WaitForSeconds(sfxClip.length);
+        Destroy(audioSource);
     }
 
     public void PlayMusic(string clipName) {
@@ -57,27 +66,16 @@ public class AudioManager : MonoBehaviour {
         } else Debug.LogWarning($"The {clipName} AudioClip was not found in the musicClips dict.");
     }
 
-    public void PlayCountdown() {
-        _countdownSource.clip = _countdownClip;
-        _countdownSource.Play();
-    }
-
-    public bool IsPlayingCountDown() => _countdownSource.isPlaying;
-
     public void StopMusic() => _musicSource.Stop();
 
-    public void StopSFX() => _sfxSource.Stop();
-
-    public void StopCountdown() => _countdownSource.Stop();
+    public void StopCountdown() {
+        if (countdownSource != null) countdownSource.Stop();
+    }
 
     public void ChangeVolume(float value) {
-        _sfxSource.volume = value;
+        _sfxVolume = value;
         _musicSource.volume = value;
-        _countdownSource.volume = value;
     }
 
-    public void ChangeSFXVolume(float value) {
-        _sfxSource.volume = value;
-        _countdownSource.volume = value;
-    }
+    public void ChangeSFXVolume(float value) => _sfxVolume = value;
 }

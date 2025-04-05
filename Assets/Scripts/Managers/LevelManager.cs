@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
-using UnityEngine.UI;
 
 public class LevelManager : MonoBehaviour {
 
@@ -16,8 +15,6 @@ public class LevelManager : MonoBehaviour {
     public static LevelManager Instance { get; private set; }
     int _currentLevel = 0;
     int _counter = 0;
-    int _maxCount = 300;
-
     void Awake() {
         if (Instance == null) {
             Instance = this;
@@ -25,15 +22,13 @@ public class LevelManager : MonoBehaviour {
         } else Destroy(gameObject);
         //if (!PlayerPrefs.HasKey("levelsPassed")) PlayerPrefs.SetInt("levelsPassed", 0);
     }
-    void Start() {
-
-        GameObject.Find("Total").GetComponent<TextMeshProUGUI>().text = $"/{_maxCount.ToString("D3")}";
-    }
 
     public void SetLevel(int level) {
 
-        if (level == -1) level = _currentLevel; // Comes from DeathZone
+        //if (level == -1) level = _currentLevel; // Comes from DeathZone
         _currentLevel = level;
+        _counter = 0;
+
         _player.GetComponent<CharacterController>().enabled = false;
         _player.transform.position = _playerSpawnPoints[level].position;
         _camera.transform.position = _cameraSpawnPoints[level].position;
@@ -44,15 +39,15 @@ public class LevelManager : MonoBehaviour {
 
     }
 
-    public void IncrementCounter(int points) {
+    public void IncrementCounter(int points = 1) {
 
         _counter += points;
-        _counterText.text = _counter.ToString("D3");
+        _counterText.text = _counter.ToString("D2");
     }
 
     public void SaveCounter() {
 
         PlayerPrefs.SetInt("score", _counter);
-        GameObject.Find("FinalCount").GetComponent<TextMeshProUGUI>().text = $"{_counter.ToString("D3")}/{_maxCount.ToString("D3")}";
+        GameObject.Find("FinalCount").GetComponent<TextMeshProUGUI>().text = $"{_counter.ToString("D2")}";
     }
 }

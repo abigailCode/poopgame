@@ -17,6 +17,9 @@ public class PlayerColisionBehaviour : MonoBehaviour {
         if (other.CompareTag("PickUp")) {
             Destroy(other.transform.parent.gameObject);
 
+            LevelManager.Instance.IncrementCounter();
+            AudioManager.Instance.PlaySFX("pickup");
+
             transform.localScale *= scaleMultiplier;
 
             if (movementScript != null) {

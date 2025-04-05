@@ -25,7 +25,7 @@ public class GameManager : MonoBehaviour {
 
     public void GameOver() {
 
-        AudioManager.Instance.StopSFX();
+        AudioManager.Instance.StopCountdown();
         StopAllCoroutines();
 
         TakePicture("GameOverPanel");
@@ -37,7 +37,7 @@ public class GameManager : MonoBehaviour {
 
     public void GameWon() {
 
-        AudioManager.Instance.StopSFX();
+        AudioManager.Instance.StopCountdown();
         StopAllCoroutines();
 
         TakePicture("GameWonPanel");
@@ -65,7 +65,7 @@ public class GameManager : MonoBehaviour {
         panel.SetActive(true);
         if (panel.name == "GameWonPanel") {
             GameObject.Find("HUD").GetComponent<TimerBehaviour>().SaveTime();
-            GameObject.Find("LevelController").GetComponent<LevelManager>().SaveCounter();
+            //GameObject.Find("LevelController").GetComponent<LevelManager>().SaveCounter();
         }
     }
 

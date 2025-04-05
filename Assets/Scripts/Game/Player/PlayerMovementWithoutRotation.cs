@@ -125,8 +125,6 @@ public class PlayerMovementWithoutRotation : MonoBehaviour {
     void RandomFart() {
         bool shouldFart = UnityEngine.Random.Range(0, 10) == 3;
 
-        if (shouldFart) {
-            AudioManager.Instance.PlaySFX($"fart{UnityEngine.Random.Range(1,3)}");
-        }
+        if (shouldFart) AudioManager.Instance.PlaySFX($"fart{UnityEngine.Random.Range(1,3)}");
     }
 }

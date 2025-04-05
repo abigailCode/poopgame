@@ -60,7 +60,7 @@ public class TimerBehaviour : MonoBehaviour {
         GameObject countdown = GameObject.Find("Countdown");
         _countdownText = countdown.GetComponent<TextMeshProUGUI>();
         countdown.GetComponent<Animator>().enabled = true;
-        AudioManager.Instance.PlayCountdown();
+        AudioManager.Instance.PlaySFX("countdown");
 
         StartCoroutine(CountdownCoroutine(countdown, count));
     }
