@@ -1,13 +1,14 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
 public class TimerBehaviour : MonoBehaviour {
 
-    [SerializeField] float remainingTime = 0f;
+    [SerializeField] float remainingTime = 120f;
     TextMeshProUGUI _timerText, _countdownText;
     Coroutine _timerCoroutine;
+
+    int countdownTime = 30;
 
     public void Start() {
         _timerText = GameObject.Find("Timer").GetComponent<TextMeshProUGUI>();
@@ -28,9 +29,9 @@ public class TimerBehaviour : MonoBehaviour {
 
         while (true) {
             yield return new WaitForSeconds(1);
-            _timerText.text = FormatTime(++remainingTime);
+            _timerText.text = FormatTime(--remainingTime);
             //GameObject.Find("Pointer").GetComponent<HealthBarBehaviour>().DecrementHp(1f);
-            //if (remainingTime <= 15) ShowCountdown();
+            if (remainingTime <= countdownTime) ShowCountdown();
         }
         //GameOver();
     }
@@ -52,4 +53,28 @@ public class TimerBehaviour : MonoBehaviour {
         GameObject.Find("Time").GetComponent<TextMeshProUGUI>().text = FormatTime(remainingTime);
     }
 
+    public void ShowCountdown() {
+        int count = countdownTime;
+        _countdownText = GameObject.Find("Countdown").GetComponent<TextMeshProUGUI>();
+        _countdownText.text = FormatTime(remainingTime);
+        _countdownText.gameObject.SetActive(true);
+        GameObject countdown = GameObject.Find("CountDown");
+        countdown.GetComponent<Animator>().enabled = true;
+        AudioManager.Instance.PlaySFX("countdown");
+
+        StartCoroutine(CountdownCoroutine(countdown, count));
+    }
+
+    IEnumerator CountdownCoroutine(GameObject countdown, int count) {
+        while (count > 0) {
+            //cameraShake.Shake(0.5f, 0.7f);
+            _countdownText.text = count.ToString();
+            yield return new WaitForSeconds(1f);
+            count--;
+        }
+        AudioManager.Instance.StopSFX();
+        _countdownText.text = "";
+        countdown.GetComponent<Animator>().enabled = false;
+        //GameOver();
+    }
 }
