@@ -986,6 +986,10 @@ PrefabInstance:
       propertyPath: m_text
       value: ehgfdghfgh
       objectReference: {fileID: 0}
+    - target: {fileID: 1178243817032084655, guid: 1d04ccc707fed3f41bfcd554dfc45645, type: 3}
+      propertyPath: m_text
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 1370360760335745589, guid: 1d04ccc707fed3f41bfcd554dfc45645, type: 3}
       propertyPath: m_StringReference.m_TableEntryReference.m_KeyId
       value: 355405529927680
@@ -1257,6 +1261,10 @@ PrefabInstance:
     - target: {fileID: 7826834727789943380, guid: 1d04ccc707fed3f41bfcd554dfc45645, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -188
+      objectReference: {fileID: 0}
+    - target: {fileID: 8351023175423883906, guid: 1d04ccc707fed3f41bfcd554dfc45645, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8351023175423883906, guid: 1d04ccc707fed3f41bfcd554dfc45645, type: 3}
       propertyPath: m_Controller
