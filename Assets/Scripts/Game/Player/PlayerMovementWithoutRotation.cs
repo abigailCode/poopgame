@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -27,6 +28,7 @@ public class PlayerMovementWithoutRotation : MonoBehaviour {
     public GameObject levelController;
 
     [SerializeField] InputActionReference inputMove;
+    [SerializeField] ParticleSystem poopParticles;
 
     private void OnEnable() {
         inputMove.action.Enable();
@@ -66,11 +68,13 @@ public class PlayerMovementWithoutRotation : MonoBehaviour {
 
         // Saltar si input.y > 0 y está en el suelo
         if (input.y > 0.1f && player.isGrounded) {
+            poopParticles.gameObject.SetActive(false);
             SetJump();
         }
 
         // Mover al personaje
         player.Move(movePlayer * Time.deltaTime);
+        if (player.isGrounded && playerInput.sqrMagnitude > 0.01f && !poopParticles.gameObject.activeSelf) StartCoroutine(ActivatePoopParticles());
     }
 
     void CamDirection() {
@@ -103,5 +107,11 @@ public class PlayerMovementWithoutRotation : MonoBehaviour {
         transform.localScale = defaultScale;
         jumpForce = defaultJumpForce;
         fallVelocity = 0f;
+    }
+    
+    IEnumerator ActivatePoopParticles() {
+        poopParticles.gameObject.SetActive(true);
+        yield return new WaitForSeconds(0.5f);
+        poopParticles.gameObject.SetActive(false);
     }
 }
