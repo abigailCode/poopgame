@@ -19,12 +19,11 @@ public class CheckpointController : MonoBehaviour {
     void NextLevel() {
 
         int currentLevel = PlayerPrefs.GetInt("level", 0);
-        if (currentLevel == GameManager.Instance.maxLevels) {
+        if (++currentLevel == GameManager.Instance.maxLevels) {
             GameManager.Instance.GameWon();
             return;
         }
 
-        currentLevel++;
         PlayerPrefs.SetInt("level", currentLevel);
             
         if (PlayerPrefs.GetInt("level") > PlayerPrefs.GetInt("levelsPassed", 0))

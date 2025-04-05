@@ -3800,9 +3800,10 @@ GameObject:
   - component: {fileID: 814661090}
   - component: {fileID: 814661089}
   - component: {fileID: 814661088}
+  - component: {fileID: 814661092}
   m_Layer: 0
   m_Name: FinishCollider
-  m_TagString: Finish
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3893,6 +3894,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &814661092
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 814661087}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41c6eae7f5a1db847874b5f771d1a63c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mainCamera: {fileID: 842115833}
+  levelController: {fileID: 1970833591}
 --- !u!1001 &840529849
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -23,7 +23,7 @@ public class PlayerColisionBehaviour : MonoBehaviour {
                 movementScript.gravity *= gravityMultiplier;
                 movementScript.jumpForce *= jumpMultiplier;
             }
-        } else if (other.CompareTag("Finish")) {
+        } else if (other.CompareTag("Gravity")) {
             movementScript.fallVelocity = 0;
             movementScript.gravity /= 3.75f;
         }

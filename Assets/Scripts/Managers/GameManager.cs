@@ -11,7 +11,7 @@ public class GameManager : MonoBehaviour {
     public static GameManager Instance { get; private set; }
     CameraShake cameraShake;
     public bool isActive = false;
-    public int maxLevels = 10;
+    public int maxLevels = 1;
 
     RawImage _screenshotImage;
 
