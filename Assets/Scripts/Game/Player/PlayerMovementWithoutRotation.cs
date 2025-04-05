@@ -17,7 +17,11 @@ public class PlayerMovementWithoutRotation : MonoBehaviour {
     public float fallVelocity;
     public float jumpForce;
 
-    private float lastDamageTime;
+    private float defaultGravity;
+    private float defaultJumpForce;
+    private Vector3 defaultScale;
+
+    //private float lastDamageTime;
     public float damageInterval = 1f;
 
     public GameObject levelController;
@@ -34,7 +38,11 @@ public class PlayerMovementWithoutRotation : MonoBehaviour {
 
     void Start() {
         player = GetComponent<CharacterController>();
-        lastDamageTime = -damageInterval;
+        //lastDamageTime = -damageInterval;
+
+        defaultGravity = gravity;
+        defaultScale = transform.localScale;
+        defaultJumpForce = jumpForce;
     }
 
     void Update() {
@@ -90,28 +98,10 @@ public class PlayerMovementWithoutRotation : MonoBehaviour {
         movePlayer.y = fallVelocity;
     }
 
-    //private void OnTriggerEnter(Collider other) {
-    //    if (other.CompareTag("Enemy")) {
-    //        mainCamera.GetComponent<CameraShake>().Shake(0.5f, 0.7f);
-    //        AudioManager.Instance.PlaySFX("damage");
-    //        GameObject.Find("Pointer").GetComponent<HealthBarBehaviour>().DecrementHp(20f);
-    //    } else if (other.CompareTag("Water")) {
-    //        AudioManager.Instance.PlaySFX("water");
-    //        GameObject.Find("Pointer").GetComponent<HealthBarBehaviour>().IncrementHp(15f);
-    //        Destroy(other.transform.parent.gameObject);
-    //    } else if (other.CompareTag("PickUp")) {
-    //        AudioManager.Instance.PlaySFX("pickup");
-    //        levelController.GetComponent<LevelManager>().IncrementCounter(1);
-    //        Destroy(other.transform.parent.gameObject);
-    //    }
-    //}
-
-    //private void OnTriggerStay(Collider other) {
-    //    if (other.CompareTag("Enemy") && Time.time - lastDamageTime >= damageInterval) {
-    //        mainCamera.GetComponent<CameraShake>().Shake(0.5f, 0.7f);
-    //        AudioManager.Instance.PlaySFX("damage");
-    //        lastDamageTime = Time.time;
-    //        GameObject.Find("Pointer").GetComponent<HealthBarBehaviour>().DecrementHp(5f);
-    //    }
-    //}
+    public void ResetPlayerValues() {
+        gravity = defaultGravity;
+        transform.localScale = defaultScale;
+        jumpForce = defaultJumpForce;
+        fallVelocity = 0f;
+    }
 }

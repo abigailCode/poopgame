@@ -3911,6 +3911,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 5942284628889778871, guid: 2ee74ff217715564d98788ed1281f161, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1189455477}
+    - targetCorrespondingSourceObject: {fileID: 5942284628889778871, guid: 2ee74ff217715564d98788ed1281f161, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1189455478}
   m_SourcePrefab: {fileID: 100100000, guid: 2ee74ff217715564d98788ed1281f161, type: 3}
 --- !u!1 &1189455472 stripped
 GameObject:
@@ -3949,6 +3952,20 @@ MonoBehaviour:
   jumpForce: 15
   damageInterval: 1
   levelController: {fileID: 1970833591}
+--- !u!114 &1189455478
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1189455472}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62d2614e085537246b6b84ee77d34991, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scaleMultiplier: 1.2
+  gravityMultiplier: 1.2
 --- !u!1 &1272323464
 GameObject:
   m_ObjectHideFlags: 0
