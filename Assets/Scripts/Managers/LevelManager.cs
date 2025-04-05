@@ -6,7 +6,9 @@ using TMPro;
 public class LevelManager : MonoBehaviour {
 
     [SerializeField] Transform[] _playerSpawnPoints;
+    [SerializeField] Transform[] _cameraSpawnPoints;
     [SerializeField] GameObject _player;
+    [SerializeField] GameObject _camera;
     int _currentLevel = 0;
 
     [SerializeField] TextMeshProUGUI _counterText;
@@ -24,6 +26,7 @@ public class LevelManager : MonoBehaviour {
         _currentLevel = level;
         _player.GetComponent<CharacterController>().enabled = false;
         _player.transform.position = _playerSpawnPoints[level].position;
+        _camera.transform.position = _cameraSpawnPoints[level].position;
 
         AudioManager.Instance.PlaySFX("spawn");
         _player.GetComponent<CharacterController>().enabled = true;

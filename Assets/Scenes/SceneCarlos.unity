@@ -404,6 +404,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 951844598}
+  - {fileID: 1973359356}
   - {fileID: 983883402732905879}
   - {fileID: 1340643021}
   - {fileID: 1828844639}
@@ -2960,7 +2961,7 @@ Transform:
   m_GameObject: {fileID: 849145517}
   serializedVersion: 2
   m_LocalRotation: {x: 0.124322854, y: -0, z: -0, w: 0.9922418}
-  m_LocalPosition: {x: 5.18, y: 8.7, z: -96.09}
+  m_LocalPosition: {x: 5.18, y: 7.9322224, z: -12.849045}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5165,6 +5166,7 @@ MonoBehaviour:
   - {fileID: 951844598}
   - {fileID: 919759397}
   _cameraSpawnPoints:
+  - {fileID: 1973359356}
   - {fileID: 849145518}
   _player: {fileID: 1189455472}
   _camera: {fileID: 842115833}
@@ -5184,6 +5186,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1973359355
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1973359356}
+  m_Layer: 0
+  m_Name: CameraSpawnerPoint1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1973359356
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1973359355}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.124322854, y: -0, z: -0, w: 0.9922418}
+  m_LocalPosition: {x: 1.050307, y: 4.6322227, z: -12.849045}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 39759101}
+  m_LocalEulerAnglesHint: {x: 14.283, y: 0, z: 0}
 --- !u!224 &2009217014 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4685206326181584924, guid: 1d04ccc707fed3f41bfcd554dfc45645, type: 3}
