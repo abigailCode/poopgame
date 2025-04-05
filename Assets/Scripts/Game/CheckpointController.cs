@@ -32,7 +32,5 @@ public class CheckpointController : MonoBehaviour {
 
         mainCamera.GetComponent<CameraBehaviour>().SetCameraPosition(currentLevel);
         levelController.GetComponent<LevelManager>().SetLevel(currentLevel);
-        
     }
-
 }

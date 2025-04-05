@@ -77,9 +77,12 @@ public class PlayerMovementWithoutRotation : MonoBehaviour {
 
         player.Move(movePlayer * Time.deltaTime);
 
-        if (player.isGrounded && movementInput.sqrMagnitude > 0.01f && !poopParticles.gameObject.activeSelf) StartCoroutine(ActivatePoopParticles());
-    }
+        if (player.isGrounded && movementInput.sqrMagnitude > 0.01f) {
+            if (!poopParticles.gameObject.activeSelf) StartCoroutine(ActivatePoopParticles());
 
+            RandomFart();
+        }
+    }
 
     void CamDirection() {
         camForward = mainCamera.transform.forward;
@@ -117,5 +120,13 @@ public class PlayerMovementWithoutRotation : MonoBehaviour {
         poopParticles.gameObject.SetActive(true);
         yield return new WaitForSeconds(0.5f);
         poopParticles.gameObject.SetActive(false);
+    }
+
+    void RandomFart() {
+        bool shouldFart = UnityEngine.Random.Range(0, 10) == 3;
+
+        if (shouldFart) {
+            AudioManager.Instance.PlaySFX($"fart{UnityEngine.Random.Range(1,3)}");
+        }
     }
 }

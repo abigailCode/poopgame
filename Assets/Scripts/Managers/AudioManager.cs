@@ -30,6 +30,9 @@ public class AudioManager : MonoBehaviour {
         _sfxClips["water"] = Resources.Load<AudioClip>("SFX/SFX_WaterBottle_PickedUp");
         _sfxClips["pickup"] = Resources.Load<AudioClip>("SFX/SFX_Reward");
         _sfxClips["error"] = Resources.Load<AudioClip>("SFX/SFX_Error");
+        _sfxClips["fart1"] = Resources.Load<AudioClip>("SFX/SFX_Fart1");
+        _sfxClips["fart2"] = Resources.Load<AudioClip>("SFX/SFX_Fart2");
+        _sfxClips["fart3"] = Resources.Load<AudioClip>("SFX/SFX_Fart3");
     }
 
     void LoadMusicClips() {
