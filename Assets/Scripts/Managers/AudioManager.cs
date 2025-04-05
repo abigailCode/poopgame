@@ -6,9 +6,11 @@ public class AudioManager : MonoBehaviour {
     public static AudioManager Instance;
     [SerializeField] AudioSource _sfxSource;
     [SerializeField] AudioSource _musicSource;
+    [SerializeField] AudioSource _countdownSource;
 
     readonly Dictionary<string, AudioClip> _sfxClips = new();
     readonly Dictionary<string, AudioClip> _musicClips = new();
+    AudioClip _countdownClip;
 
     void Awake() {
         if (Instance == null) {
@@ -16,6 +18,7 @@ public class AudioManager : MonoBehaviour {
             DontDestroyOnLoad(gameObject);
             LoadSFXClips();
             LoadMusicClips();
+            _countdownClip = Resources.Load<AudioClip>("SFX/countdownSFX");
         } else Destroy(gameObject);
     }
 
@@ -51,16 +54,27 @@ public class AudioManager : MonoBehaviour {
         } else Debug.LogWarning($"The {clipName} AudioClip was not found in the musicClips dict.");
     }
 
-    public bool IsPlayingCountDown() => _sfxSource.clip != null && _sfxSource.isPlaying && _sfxSource.clip.name == "countdownSFX";
+    public void PlayCountdown() {
+        _countdownSource.clip = _countdownClip;
+        _countdownSource.Play();
+    }
+
+    public bool IsPlayingCountDown() => _countdownSource.isPlaying;
 
     public void StopMusic() => _musicSource.Stop();
 
     public void StopSFX() => _sfxSource.Stop();
 
+    public void StopCountdown() => _countdownSource.Stop();
+
     public void ChangeVolume(float value) {
         _sfxSource.volume = value;
         _musicSource.volume = value;
+        _countdownSource.volume = value;
     }
 
-    public void ChangeSFXVolume(float value) => _sfxSource.volume = value;
+    public void ChangeSFXVolume(float value) {
+        _sfxSource.volume = value;
+        _countdownSource.volume = value;
+    }
 }

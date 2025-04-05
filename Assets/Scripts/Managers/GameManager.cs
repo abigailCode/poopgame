@@ -87,4 +87,9 @@ public class GameManager : MonoBehaviour {
 
         _screenshotImage.texture = texture;
     }
+
+    public void ShakeCamera(float duration, float magnitude) {
+        if (Instance.cameraShake == null) Instance.cameraShake = Camera.main.GetComponent<CameraShake>();
+        Instance.cameraShake.Shake(duration, magnitude);
+    }
 }
