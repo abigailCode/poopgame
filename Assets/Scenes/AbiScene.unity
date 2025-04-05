@@ -20,13 +20,13 @@ RenderSettings:
   m_FogDensity: 0.01
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
-  m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
-  m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
-  m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
-  m_AmbientIntensity: 1
+  m_AmbientSkyColor: {r: 1, g: 0.3726415, b: 0.7219047, a: 1}
+  m_AmbientEquatorColor: {r: 0.4433962, g: 0, b: 0.23980182, a: 1}
+  m_AmbientGroundColor: {r: 0.2735849, g: 0, b: 0.17805173, a: 1}
+  m_AmbientIntensity: 0
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 2100000, guid: d0557b2a1bc056144b605a5379fd2795, type: 2}
+  m_SkyboxMaterial: {fileID: 2100000, guid: 1782563c66a973d45bc7313921efcb84, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
+  m_IndirectSpecularColor: {r: 0.901756, g: 0.42722982, b: 0.67015624, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -5053,7 +5053,9 @@ MonoBehaviour:
   _playerSpawnPoints:
   - {fileID: 951844598}
   - {fileID: 919759397}
+  _cameraSpawnPoints: []
   _player: {fileID: 1189455472}
+  _camera: {fileID: 0}
   _counterText: {fileID: 217485635}
 --- !u!4 &1970833593
 Transform:
