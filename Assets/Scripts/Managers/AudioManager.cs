@@ -30,8 +30,8 @@ public class AudioManager : MonoBehaviour {
     }
 
     void LoadMusicClips() {
-        _musicClips["mainTheme"] = Resources.Load<AudioClip>("Music/Desert/BGM_Game");
-        _musicClips["menuTheme"] = Resources.Load<AudioClip>("Music/Desert/BGM_MainMenu");
+        _musicClips["mainTheme"] = Resources.Load<AudioClip>("Music/BGM_Game");
+        _musicClips["menuTheme"] = Resources.Load<AudioClip>("Music/BGM_MainMenu");
         _musicClips["introTheme"] = Resources.Load<AudioClip>("Music/BGM_Intro");
         _musicClips["victoryTheme"] = Resources.Load<AudioClip>("Music/BGM_Victory");
         _musicClips["gameOverTheme"] = Resources.Load<AudioClip>("Music/BGM_GaveOver");
