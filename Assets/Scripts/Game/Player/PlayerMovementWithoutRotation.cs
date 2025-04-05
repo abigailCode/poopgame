@@ -77,8 +77,9 @@ public class PlayerMovementWithoutRotation : MonoBehaviour {
 
         player.Move(movePlayer * Time.deltaTime);
 
-        if (player.isGrounded && playerInput.sqrMagnitude > 0.01f && !poopParticles.gameObject.activeSelf) StartCoroutine(ActivatePoopParticles());
+        if (player.isGrounded && movementInput.sqrMagnitude > 0.01f && !poopParticles.gameObject.activeSelf) StartCoroutine(ActivatePoopParticles());
     }
+
 
     void CamDirection() {
         camForward = mainCamera.transform.forward;
