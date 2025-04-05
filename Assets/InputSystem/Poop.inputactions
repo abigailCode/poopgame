@@ -39,6 +39,17 @@
                     "isPartOfComposite": true
                 },
                 {
+                    "name": "backward",
+                    "id": "4818a1d5-2e98-4b39-853c-7625643d3e78",
+                    "path": "<Keyboard>/s",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
                     "name": "left",
                     "id": "166dd765-bac7-4243-a4df-e561bc9cce11",
                     "path": "<Keyboard>/a",
@@ -53,28 +64,6 @@
                     "name": "right",
                     "id": "5eb60104-a450-4225-b62a-23ee08058257",
                     "path": "<Keyboard>/d",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Move",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "forward",
-                    "id": "9cd19373-5521-4d6f-86e8-6cd37c9dbb87",
-                    "path": "<Keyboard>/w",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Move",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "backward",
-                    "id": "44a2a000-4b8e-482a-821d-2ae2639619ca",
-                    "path": "<Keyboard>/s",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
