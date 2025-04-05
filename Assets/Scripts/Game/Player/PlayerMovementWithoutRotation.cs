@@ -50,30 +50,33 @@ public class PlayerMovementWithoutRotation : MonoBehaviour {
     void Update() {
         Vector3 input = inputMove.action.ReadValue<Vector3>();
 
-        // Movimiento en XZ
-        playerInput = new Vector3(input.x, 0, input.z);
-        playerInput = Vector3.ClampMagnitude(playerInput, 1);
+        Vector3 movementInput = new Vector3(input.x, 0, 0);
+        movementInput = Vector3.ClampMagnitude(movementInput, 1);
+
+        Vector3 lookInput = new Vector3(input.x, 0, input.z);
+        lookInput = Vector3.ClampMagnitude(lookInput, 1);
 
         CamDirection();
 
-        movePlayer = playerInput.x * camRight + playerInput.z * camForward;
+        movePlayer = movementInput.x * camRight;
         movePlayer *= speed;
 
-        // Rotar hacia la dirección del movimiento
-        if (movePlayer != Vector3.zero)
-            player.transform.LookAt(player.transform.position + new Vector3(movePlayer.x, 0, movePlayer.z));
-
-        // Aplicar gravedad
         SetGravity();
 
-        // Saltar si input.y > 0 y está en el suelo
         if (input.y > 0.1f && player.isGrounded) {
             poopParticles.gameObject.SetActive(false);
             SetJump();
         }
 
-        // Mover al personaje
+        if (lookInput != Vector3.zero) {
+            Vector3 lookDirection = lookInput.x * camRight + lookInput.z * camForward;
+            if (lookDirection != Vector3.zero) {
+                player.transform.LookAt(player.transform.position + new Vector3(lookDirection.x, 0, lookDirection.z));
+            }
+        }
+
         player.Move(movePlayer * Time.deltaTime);
+
         if (player.isGrounded && playerInput.sqrMagnitude > 0.01f && !poopParticles.gameObject.activeSelf) StartCoroutine(ActivatePoopParticles());
     }
 
