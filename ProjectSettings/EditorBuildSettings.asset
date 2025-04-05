@@ -11,6 +11,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Game.unity
     guid: e2b2b3a1237dd00468233346aff72b46
+  - enabled: 1
+    path: Assets/Scenes/Game Kilian.unity
+    guid: 67ea1ffb483c45c42a0c95098974272e
   m_configObjects:
     com.unity.addressableassets: {fileID: 11400000, guid: cf611a681582af047958d3add24b9c77, type: 2}
     com.unity.localization.settings: {fileID: 11400000, guid: 122de009717fc2542bc687d5d37924df, type: 2}
