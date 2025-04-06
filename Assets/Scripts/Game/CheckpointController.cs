@@ -6,7 +6,8 @@ public class CheckpointController : MonoBehaviour {
 
     [SerializeField] GameObject mainCamera;
     [SerializeField] GameObject levelController;
- 
+    [SerializeField] GameObject timerHUD;
+
 
     void Start() {
         PlayerPrefs.SetInt("level", 0);
@@ -32,5 +33,6 @@ public class CheckpointController : MonoBehaviour {
 
         mainCamera.GetComponent<CameraBehaviour>().SetCameraPosition(currentLevel);
         levelController.GetComponent<LevelManager>().SetLevel(currentLevel);
+        timerHUD.GetComponent<TimerBehaviour>().StopTimer();
     }
 }
