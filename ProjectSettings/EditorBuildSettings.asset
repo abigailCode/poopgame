@@ -23,6 +23,12 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/GameFinal.unity
     guid: 7934506b710c07f41aa92f0243cc0d3f
+  - enabled: 1
+    path: Assets/Scenes/AbiScene.unity
+    guid: 5ff18ae340240e1479e19b1edf2c81d2
+  - enabled: 1
+    path: Assets/Scenes/Carlos Test.unity
+    guid: de94d3e2e8368aa4c8b35208dfa54eda
   m_configObjects:
     com.unity.addressableassets: {fileID: 11400000, guid: cf611a681582af047958d3add24b9c77, type: 2}
     com.unity.localization.settings: {fileID: 11400000, guid: 122de009717fc2542bc687d5d37924df, type: 2}

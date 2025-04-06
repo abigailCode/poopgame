@@ -52,6 +52,8 @@ public class PlayerColisionBehaviour : MonoBehaviour {
                 jumpMultipliers[currentLevel],
                 false
             );
+
+            if (transform.localScale.x < 1f) GameManager.Instance.GameOver();
         }
     }
 
