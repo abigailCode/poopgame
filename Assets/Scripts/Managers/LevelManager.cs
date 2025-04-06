@@ -23,7 +23,9 @@ public class LevelManager : MonoBehaviour {
 
         _player.GetComponent<CharacterController>().enabled = false;
         _player.transform.position = _playerSpawnPoints[level].position;
+        _player.transform.rotation = _playerSpawnPoints[level].rotation;
         _camera.transform.position = _cameraSpawnPoints[level].position;
+        _camera.transform.rotation = _cameraSpawnPoints[level].rotation;
 
         _player.GetComponent<PlayerMovementWithoutRotation>().ResetPlayerValues();
 
