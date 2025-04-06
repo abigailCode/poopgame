@@ -31,10 +31,10 @@ public class TimerBehaviour : MonoBehaviour {
         _timerText.text = FormatTime(_remainingTime);
 
         while (true) {
+            yield return new WaitForSeconds(1);
             while (_isPaused) {
                 yield return null;
             }
-            yield return new WaitForSeconds(1);
             _timerText.text = FormatTime(--_remainingTime);
             if (!isCountdownActive && _remainingTime <= _initialCountdownTime)
                 ShowCountdown();
