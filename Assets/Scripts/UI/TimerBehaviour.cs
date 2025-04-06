@@ -31,7 +31,6 @@ public class TimerBehaviour : MonoBehaviour {
         _timerText.text = FormatTime(remainingTime);
 
         while (true) {
-            Debug.Log("Timer: " + remainingTime);
             yield return new WaitForSeconds(1);
             while (_isPaused) {
                 yield return null;
@@ -52,7 +51,8 @@ public class TimerBehaviour : MonoBehaviour {
 
     public void RestartTime(float time = -1) {
         remainingTime = time == -1 ? _remainingTime : time;
-        StartCoroutine(UpdateTimer());
+        _isPaused = false;
+        _timerCoroutine = StartCoroutine(UpdateTimer());
     }
 
     public void SaveTime() {
