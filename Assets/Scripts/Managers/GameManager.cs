@@ -31,7 +31,7 @@ public class GameManager : MonoBehaviour {
     }
 
     public void PauseGame() {
-
+        Time.timeScale = 0f;
         GameObject hud = GameObject.Find("HUD");
         if (hud == null) return;
 
@@ -43,7 +43,7 @@ public class GameManager : MonoBehaviour {
     }
 
     public void ResumeGame() {
-
+        Time.timeScale = 1f;
         GameObject hud = GameObject.Find("HUD");
         if (hud == null) return;
 

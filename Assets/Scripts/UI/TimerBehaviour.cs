@@ -103,7 +103,7 @@ public class TimerBehaviour : MonoBehaviour {
     }
 
     void PauseCountdown() {
-        Debug.Log("Here");
+        GameObject.Find("Countdown").GetComponent<Animator>().enabled = false;
         AudioManager.Instance.PauseCountdown();
     }
 
