@@ -11,6 +11,8 @@ public class TimerBehaviour : MonoBehaviour {
     int countdownTime = 30;
     bool isCountdownActive = false;
 
+    Coroutine _countdownCoroutine;
+
     public void Start() {
         _timerText = GameObject.Find("Timer").GetComponent<TextMeshProUGUI>();
         _timerCoroutine = StartCoroutine(UpdateTimer());
@@ -54,20 +56,21 @@ public class TimerBehaviour : MonoBehaviour {
         GameObject.Find("Time").GetComponent<TextMeshProUGUI>().text = FormatTime(remainingTime);
     }
 
-    public void ShowCountdown() {
+    public void ShowCountdown(bool shortCount = false) {
         isCountdownActive = true;
-        int count = countdownTime;
+        int count = shortCount ? 3: countdownTime;
         GameObject countdown = GameObject.Find("Countdown");
         _countdownText = countdown.GetComponent<TextMeshProUGUI>();
         countdown.GetComponent<Animator>().enabled = true;
         AudioManager.Instance.PlaySFX("countdown");
 
-        StartCoroutine(CountdownCoroutine(countdown, count));
+        _countdownCoroutine = StartCoroutine(CountdownCoroutine(countdown, count));
     }
 
     IEnumerator CountdownCoroutine(GameObject countdown, int count) {
         while (count > 0) {
-            GameManager.Instance.ShakeCamera(0.5f, 0.7f);
+            if (count <= 3) GameManager.Instance.ShakeCamera(1f, 1f);
+            else GameManager.Instance.ShakeCamera(0.5f, 0.7f);
             
             _countdownText.text = count.ToString();
             yield return new WaitForSeconds(1f);
@@ -78,5 +81,11 @@ public class TimerBehaviour : MonoBehaviour {
         countdown.GetComponent<Animator>().enabled = false;
         isCountdownActive = false;
         GameManager.Instance.GameOver();
+    }
+
+    public void StopCountdown() {
+        if (_countdownCoroutine != null) StopCoroutine(_countdownCoroutine);
+        GameObject.Find("Countdown").GetComponent<Animator>().enabled = false;
+        isCountdownActive = false;
     }
 }

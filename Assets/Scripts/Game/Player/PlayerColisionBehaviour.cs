@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerColisionBehaviour : MonoBehaviour {
 
+    [SerializeField] TimerBehaviour timer;
     [SerializeField] float scaleMultiplier = 1.2f;
     [SerializeField] float gravityMultiplier = 1.2f;
     [SerializeField] float jumpMultiplier = 1.02f;
@@ -11,13 +12,14 @@ public class PlayerColisionBehaviour : MonoBehaviour {
 
     private void Start() {
         movementScript = GetComponent<PlayerMovementWithoutRotation>();
+        timer = GameObject.Find("HUD").GetComponent<TimerBehaviour>();
     }
 
     private void OnTriggerEnter(Collider other) {
         if (other.CompareTag("PickUp")) {
             Destroy(other.transform.parent.gameObject);
 
-            LevelManager.Instance.IncrementCounter();
+            movementScript.levelController.GetComponent<LevelManager>().IncrementCounter();
             AudioManager.Instance.PlaySFX("pickup");
 
             transform.localScale *= scaleMultiplier;
@@ -27,10 +29,19 @@ public class PlayerColisionBehaviour : MonoBehaviour {
                 movementScript.jumpForce *= jumpMultiplier;
             }
         } else if (other.CompareTag("Gravity")) {
+            StartCoroutine(Death());
+
             movementScript.fallVelocity = 0;
-            movementScript.gravity /= 3.75f;
+            movementScript.gravity /= 4f / transform.localScale.x;
         }
     }
+
+    IEnumerator Death() {
+        yield return new WaitForSeconds(1f);
+        timer.StopCountdown();
+        timer.ShowCountdown(true);
+    }
+
     //private void OnTriggerEnter(Collider other) {
         //if (other.tag == "Enemy") {
         //    mainCamera.GetComponent<CameraShake>().Shake(0.5f, 0.7f);

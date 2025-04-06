@@ -12,16 +12,8 @@ public class LevelManager : MonoBehaviour {
 
     [SerializeField] TextMeshProUGUI _counterText;
 
-    public static LevelManager Instance { get; private set; }
     int _currentLevel = 0;
     int _counter = 0;
-    void Awake() {
-        if (Instance == null) {
-            Instance = this;
-            DontDestroyOnLoad(gameObject);
-        } else Destroy(gameObject);
-        //if (!PlayerPrefs.HasKey("levelsPassed")) PlayerPrefs.SetInt("levelsPassed", 0);
-    }
 
     public void SetLevel(int level) {
 

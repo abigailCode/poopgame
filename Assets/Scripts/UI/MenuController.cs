@@ -31,8 +31,7 @@ public class MenuController : MonoBehaviour {
                 if (Time.timeScale == 0) Time.timeScale = 1f;
 
                 AudioManager.Instance.PlayMusic("mainTheme");
-                //SCManager.Instance.LoadScene("SceneCarlos");
-                SCManager.Instance.LoadScene("Game Kilian");
+                SCManager.Instance.LoadScene("Game Test");
                 break;
             case "RestartGame":
                 if (Time.timeScale == 0) Time.timeScale = 1f;
