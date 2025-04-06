@@ -52,6 +52,7 @@ public class TimerBehaviour : MonoBehaviour {
     public void RestartTime(float time = -1) {
         remainingTime = time == -1 ? _remainingTime : time;
         _isPaused = false;
+        isCountdownActive = false;
         _timerCoroutine = StartCoroutine(UpdateTimer());
     }
 
