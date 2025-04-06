@@ -31,7 +31,6 @@ public class CheckpointController : MonoBehaviour {
             PlayerPrefs.SetInt("levelsPassed", PlayerPrefs.GetInt("level"));
         PlayerPrefs.Save();
 
-        mainCamera.GetComponent<CameraBehaviour>().SetCameraPosition(currentLevel);
         levelController.GetComponent<LevelManager>().SetLevel(currentLevel);
         mainCamera.GetComponent<VerticalCameraFollow>().verticalOffset = 7f;
         timerHUD.GetComponent<TimerBehaviour>().Stop();
