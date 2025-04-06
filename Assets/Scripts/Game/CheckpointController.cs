@@ -33,6 +33,7 @@ public class CheckpointController : MonoBehaviour {
 
         mainCamera.GetComponent<CameraBehaviour>().SetCameraPosition(currentLevel);
         levelController.GetComponent<LevelManager>().SetLevel(currentLevel);
-        timerHUD.GetComponent<TimerBehaviour>().StopTimer();
+        timerHUD.GetComponent<TimerBehaviour>().Stop();
+        timerHUD.GetComponent<TimerBehaviour>().RestartTime(-1);
     }
 }

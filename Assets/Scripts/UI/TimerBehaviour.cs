@@ -8,6 +8,8 @@ public class TimerBehaviour : MonoBehaviour {
     TextMeshProUGUI _timerText, _countdownText;
     Coroutine _timerCoroutine;
 
+    float _remainingTime;
+
     int _initialCountdownTime = 30;
     int _currentCountdown;
     bool isCountdownActive = false;
@@ -17,6 +19,7 @@ public class TimerBehaviour : MonoBehaviour {
     public void Start() {
         _isPaused = false;
         _timerText = GameObject.Find("Timer").GetComponent<TextMeshProUGUI>();
+        _remainingTime = remainingTime; // Initialize remaining time
         _timerCoroutine = StartCoroutine(UpdateTimer());
     }
 
@@ -25,15 +28,15 @@ public class TimerBehaviour : MonoBehaviour {
     }
 
     IEnumerator UpdateTimer() {
-        _timerText.text = FormatTime(remainingTime);
+        _timerText.text = FormatTime(_remainingTime);
 
         while (true) {
             while (_isPaused) {
                 yield return null;
             }
             yield return new WaitForSeconds(1);
-            _timerText.text = FormatTime(--remainingTime);
-            if (!isCountdownActive && remainingTime <= _initialCountdownTime)
+            _timerText.text = FormatTime(--_remainingTime);
+            if (!isCountdownActive && _remainingTime <= _initialCountdownTime)
                 ShowCountdown();
         }
     }
@@ -46,7 +49,9 @@ public class TimerBehaviour : MonoBehaviour {
         return minutes + ":" + seconds;
     }
 
-    public void RestartTime(float time) => remainingTime = time;
+    public void RestartTime(float time = -1) {
+         remainingTime = time == -1 ? _remainingTime : time;
+    }
 
     public void SaveTime() {
         PlayerPrefs.SetFloat("time", remainingTime);
@@ -87,7 +92,7 @@ public class TimerBehaviour : MonoBehaviour {
         GameManager.Instance.GameOver();
     }
 
-    void StopCountdown() {
+    public void StopCountdown() {
         AudioManager.Instance.StopCountdown();
         if (_countdownCoroutine != null) {
             StopCoroutine(_countdownCoroutine);
