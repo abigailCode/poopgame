@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class PlayerColisionBehaviour : MonoBehaviour {
 
-    [SerializeField] TimerBehaviour timer;
     [SerializeField] float scaleMultiplier = 1.2f;
     [SerializeField] float gravityMultiplier = 1.2f;
     [SerializeField] float jumpMultiplier = 1.02f;
+   
     PlayerMovementWithoutRotation movementScript;
+    TimerBehaviour timer;
 
     private void Start() {
         movementScript = GetComponent<PlayerMovementWithoutRotation>();
