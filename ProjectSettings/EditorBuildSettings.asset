@@ -11,7 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Game.unity
     guid: e2b2b3a1237dd00468233346aff72b46
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Game Kilian.unity
     guid: 33d12450a1ca07545a8fb430f011c0e9
   - enabled: 1
@@ -20,6 +20,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/GameCarlos.unity
     guid: 84ee405dd69789f4490ac4ac4dcaee98
+  - enabled: 1
+    path: Assets/Scenes/GameFinal.unity
+    guid: 7934506b710c07f41aa92f0243cc0d3f
   m_configObjects:
     com.unity.addressableassets: {fileID: 11400000, guid: cf611a681582af047958d3add24b9c77, type: 2}
     com.unity.localization.settings: {fileID: 11400000, guid: 122de009717fc2542bc687d5d37924df, type: 2}
