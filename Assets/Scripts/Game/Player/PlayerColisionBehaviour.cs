@@ -88,8 +88,8 @@ public class PlayerColisionBehaviour : MonoBehaviour {
     }
 
     IEnumerator Death() {
-        yield return new WaitForSeconds(1f);
         timer.StopCountdown();
+        yield return new WaitForSeconds(1f);
         timer.ShowCountdown(true);
     }
 }

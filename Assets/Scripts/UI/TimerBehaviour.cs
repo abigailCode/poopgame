@@ -84,7 +84,11 @@ public class TimerBehaviour : MonoBehaviour {
     }
 
     public void StopCountdown() {
-        if (_countdownCoroutine != null) StopCoroutine(_countdownCoroutine);
+        if (_countdownCoroutine != null) {
+            StopCoroutine(_countdownCoroutine);
+            AudioManager.Instance.StopCountdown();
+            _countdownText.text = "";
+        }
         GameObject.Find("Countdown").GetComponent<Animator>().enabled = false;
         isCountdownActive = false;
     }
