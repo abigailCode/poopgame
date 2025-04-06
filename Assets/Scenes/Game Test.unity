@@ -1289,6 +1289,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mainCamera: {fileID: 963194225}
   levelController: {fileID: 1970833591}
+  timerHUD: {fileID: 0}
 --- !u!135 &348998035
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -1747,7 +1748,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8070568653018331197, guid: eaca0990ddaa7e1478f32397b09c82b4, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -20.9
+      value: -27.7
       objectReference: {fileID: 0}
     - target: {fileID: 8070568653018331197, guid: eaca0990ddaa7e1478f32397b09c82b4, type: 3}
       propertyPath: m_LocalPosition.z
@@ -6666,6 +6667,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: GravityCollider
       objectReference: {fileID: 0}
+    - target: {fileID: 260999621256210270, guid: 069016b3a89e1134b89dfcb14885e13d, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7005382816313193576, guid: 069016b3a89e1134b89dfcb14885e13d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.31042588
@@ -6676,7 +6681,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7005382816313193576, guid: 069016b3a89e1134b89dfcb14885e13d, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 81.74095
+      value: 82.5
       objectReference: {fileID: 0}
     - target: {fileID: 7005382816313193576, guid: 069016b3a89e1134b89dfcb14885e13d, type: 3}
       propertyPath: m_LocalRotation.w

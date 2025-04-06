@@ -39,10 +39,11 @@ public class PlayerColisionBehaviour : MonoBehaviour {
                 true
             );
         } else if (other.CompareTag("Gravity")) {
+            movementScript.mainCamera.GetComponent<VerticalCameraFollow>().verticalOffset = -5f;
             StartCoroutine(Death());
 
             movementScript.fallVelocity = 0;
-            movementScript.gravity /= 4f / transform.localScale.x;
+            movementScript.gravity /= 10f / transform.localScale.x;
         } else if (other.CompareTag("Enemy")) {
             AdjustPlayerAttributes(
                 scaleMultipliers[currentLevel],
