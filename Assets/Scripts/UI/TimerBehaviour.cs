@@ -15,22 +15,22 @@ public class TimerBehaviour : MonoBehaviour {
     bool _isPaused = false;
 
     public void Start() {
+        _isPaused = false;
         _timerText = GameObject.Find("Timer").GetComponent<TextMeshProUGUI>();
         _timerCoroutine = StartCoroutine(UpdateTimer());
     }
 
-    public void StopTimer() {
+    void StopTimer() {
         StopCoroutine(_timerCoroutine);
-    }
-
-    public void RestartTimer() {
-        _timerCoroutine = StartCoroutine(UpdateTimer());
     }
 
     IEnumerator UpdateTimer() {
         _timerText.text = FormatTime(remainingTime);
 
         while (true) {
+            while (_isPaused) {
+                yield return null;
+            }
             yield return new WaitForSeconds(1);
             _timerText.text = FormatTime(--remainingTime);
             if (!isCountdownActive && remainingTime <= _initialCountdownTime)
@@ -38,7 +38,7 @@ public class TimerBehaviour : MonoBehaviour {
         }
     }
 
-    public string FormatTime(float time) {
+    string FormatTime(float time) {
         string minutes = (Mathf.Floor(Mathf.Round(time) / 60)).ToString();
         string seconds = (Mathf.Round(time) % 60).ToString();
         if (minutes.Length == 1) minutes = "0" + minutes;
@@ -87,7 +87,7 @@ public class TimerBehaviour : MonoBehaviour {
         GameManager.Instance.GameOver();
     }
 
-    public void StopCountdown() {
+    void StopCountdown() {
         AudioManager.Instance.StopCountdown();
         if (_countdownCoroutine != null) {
             StopCoroutine(_countdownCoroutine);
@@ -97,13 +97,29 @@ public class TimerBehaviour : MonoBehaviour {
         isCountdownActive = false;
     }
 
-    public void PauseCountdown() {
+    void PauseCountdown() {
+        Debug.Log("Here");
         AudioManager.Instance.PauseCountdown();
-        _isPaused = true;
     }
 
-    public void ResumeCountdown() {
+    void ResumeCountdown() {
         AudioManager.Instance.ResumeCountdown();
         _isPaused = false;
+    }
+
+    public void Pause() {
+        _isPaused = true;
+        PauseCountdown();
+    }
+
+    public void Resume() {
+        _isPaused = false;
+        ResumeCountdown();
+    }
+
+    public void Stop() {
+        _isPaused = true;
+        StopTimer();
+        StopCountdown();
     }
 }

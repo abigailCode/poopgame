@@ -38,7 +38,7 @@ public class GameManager : MonoBehaviour {
         GameObject pausePanel = hud.transform.Find("PausePanel").gameObject;
         pausePanel.SetActive(true);
         //StopAllCoroutines();
-        GameObject.Find("HUD").GetComponent<TimerBehaviour>().PauseCountdown();
+        GameObject.Find("HUD").GetComponent<TimerBehaviour>().Pause();
         isActive = false;
     }
 
@@ -49,17 +49,13 @@ public class GameManager : MonoBehaviour {
 
         GameObject pausePanel = hud.transform.Find("PausePanel").gameObject;
         pausePanel.SetActive(false);
-        GameObject.Find("HUD").GetComponent<TimerBehaviour>().ResumeCountdown();
+        GameObject.Find("HUD").GetComponent<TimerBehaviour>().Resume();
         isActive = true;
     }
 
     public void GameOver() {
-
-        AudioManager.Instance.StopCountdown();
-        StopAllCoroutines();
-
         TakePicture("GameOverPanel");
-        GameObject.Find("HUD").GetComponent<TimerBehaviour>().StopTimer();
+        GameObject.Find("HUD").GetComponent<TimerBehaviour>().Stop();
         Time.timeScale = 0f;
 
         //AudioManager.Instance.PlayMusic("gameOverTheme");
@@ -67,8 +63,7 @@ public class GameManager : MonoBehaviour {
 
     public void GameWon() {
 
-        AudioManager.Instance.StopCountdown();
-        StopAllCoroutines();
+        GameObject.Find("HUD").GetComponent<TimerBehaviour>().Stop();
 
         TakePicture("GameWonPanel");
         //AudioManager.Instance.PlayMusic("gameWonTheme");

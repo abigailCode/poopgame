@@ -73,6 +73,7 @@ public class AudioManager : MonoBehaviour {
     }
 
     public void PauseCountdown() {
+        Debug.Log(countdownSource != null);
         if (countdownSource != null) countdownSource.Pause();
     }
 
