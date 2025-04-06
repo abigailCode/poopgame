@@ -42,6 +42,7 @@ public class PlayerColisionBehaviour : MonoBehaviour {
             movementScript.mainCamera.GetComponent<VerticalCameraFollow>().verticalOffset = -5f;
             StartCoroutine(Death());
 
+            movementScript.jumpForce = 0;
             movementScript.fallVelocity = 0;
             movementScript.gravity /= 10f / transform.localScale.x;
         } else if (other.CompareTag("Enemy")) {

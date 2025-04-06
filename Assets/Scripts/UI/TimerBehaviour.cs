@@ -28,15 +28,16 @@ public class TimerBehaviour : MonoBehaviour {
     }
 
     IEnumerator UpdateTimer() {
-        _timerText.text = FormatTime(_remainingTime);
+        _timerText.text = FormatTime(remainingTime);
 
         while (true) {
+            Debug.Log("Timer: " + remainingTime);
             yield return new WaitForSeconds(1);
             while (_isPaused) {
                 yield return null;
             }
-            _timerText.text = FormatTime(--_remainingTime);
-            if (!isCountdownActive && _remainingTime <= _initialCountdownTime)
+            _timerText.text = FormatTime(--remainingTime);
+            if (!isCountdownActive && remainingTime <= _initialCountdownTime)
                 ShowCountdown();
         }
     }
@@ -50,7 +51,6 @@ public class TimerBehaviour : MonoBehaviour {
     }
 
     public void RestartTime(float time = -1) {
-        
         remainingTime = time == -1 ? _remainingTime : time;
         StartCoroutine(UpdateTimer());
     }

@@ -6,7 +6,6 @@ public class CheckpointController : MonoBehaviour {
 
     [SerializeField] GameObject mainCamera;
     [SerializeField] GameObject levelController;
-    [SerializeField] GameObject timerHUD;
 
 
     void Start() {
@@ -33,7 +32,5 @@ public class CheckpointController : MonoBehaviour {
 
         levelController.GetComponent<LevelManager>().SetLevel(currentLevel);
         mainCamera.GetComponent<VerticalCameraFollow>().verticalOffset = 7f;
-        timerHUD.GetComponent<TimerBehaviour>().Stop();
-        timerHUD.GetComponent<TimerBehaviour>().RestartTime(-1);
     }
 }
