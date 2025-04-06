@@ -13,8 +13,8 @@ EditorBuildSettings:
     guid: e2b2b3a1237dd00468233346aff72b46
   - enabled: 1
     path: Assets/Scenes/Game Kilian.unity
-    guid: 67ea1ffb483c45c42a0c95098974272e
-  - enabled: 1
+    guid: 33d12450a1ca07545a8fb430f011c0e9
+  - enabled: 0
     path: Assets/Scenes/SceneCarlos.unity
     guid: a451b51c0899b5d4f92a7cc1fd5426ce
   - enabled: 1
