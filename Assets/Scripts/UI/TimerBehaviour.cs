@@ -52,6 +52,7 @@ public class TimerBehaviour : MonoBehaviour {
     }
 
     public void RestartTime(float time = -1) {
+        _countdownCoroutine = null;
         isCountdownActive = false;
         remainingTime = time == -1 ? _remainingTime : time;
         _isPaused = false;
@@ -64,7 +65,6 @@ public class TimerBehaviour : MonoBehaviour {
     }
 
     public void ShowCountdown(bool shortCount = false) {
-        Debug.Log("sfsdfsfe");
         isCountdownActive = true;
         _currentCountdown = shortCount ? 3 : _initialCountdownTime;
         GameObject countdown = GameObject.Find("Countdown");
