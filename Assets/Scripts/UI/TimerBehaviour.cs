@@ -28,6 +28,7 @@ public class TimerBehaviour : MonoBehaviour {
     }
 
     IEnumerator UpdateTimer() {
+        yield return new WaitForSeconds(1);
         _timerText.text = FormatTime(remainingTime);
 
         while (true) {
@@ -36,6 +37,7 @@ public class TimerBehaviour : MonoBehaviour {
                 yield return null;
             }
             _timerText.text = FormatTime(--remainingTime);
+            Debug.Log(isCountdownActive + " " + remainingTime + " " + _initialCountdownTime + " " + _timerText.text);
             if (!isCountdownActive && remainingTime <= _initialCountdownTime)
                 ShowCountdown();
         }
@@ -50,9 +52,9 @@ public class TimerBehaviour : MonoBehaviour {
     }
 
     public void RestartTime(float time = -1) {
+        isCountdownActive = false;
         remainingTime = time == -1 ? _remainingTime : time;
         _isPaused = false;
-        isCountdownActive = false;
         _timerCoroutine = StartCoroutine(UpdateTimer());
     }
 
@@ -62,6 +64,7 @@ public class TimerBehaviour : MonoBehaviour {
     }
 
     public void ShowCountdown(bool shortCount = false) {
+        Debug.Log("sfsdfsfe");
         isCountdownActive = true;
         _currentCountdown = shortCount ? 3 : _initialCountdownTime;
         GameObject countdown = GameObject.Find("Countdown");

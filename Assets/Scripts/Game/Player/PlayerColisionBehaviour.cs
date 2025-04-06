@@ -7,7 +7,7 @@ public class PlayerColisionBehaviour : MonoBehaviour {
     [SerializeField] float[] scaleMultipliers = { 1.3f, 1.4f, 1.6f, 1.8f, 2f };
     [SerializeField] float[] gravityMultipliers = { 1.3f, 1.4f, 1.6f, 1.8f, 2f };
     [SerializeField] float[] jumpMultipliers = { 1.1f, 1.4f, 1.6f, 1.8f, 2f };
-    [SerializeField] float damageInterval = 1f;
+    [SerializeField] float damageInterval = 3f;
 
     float _lastDamageTime;
 

@@ -23,8 +23,9 @@ public class LevelManager : MonoBehaviour {
     public void SetLevel(int level) {
 
         //if (level == -1) level = _currentLevel; // Comes from DeathZone
+
+        ResetCounter();
         _currentLevel = level;
-        _counter = 0;
 
         _player.GetComponent<CharacterController>().enabled = false;
         _camera.GetComponent<VerticalCameraFollow>().enabled = false;
@@ -41,6 +42,11 @@ public class LevelManager : MonoBehaviour {
 
         timerHUD.GetComponent<TimerBehaviour>().Stop();
         timerHUD.GetComponent<TimerBehaviour>().RestartTime(-1);
+    }
+
+    public void ResetCounter() {
+        _counter = 0;
+        _counterText.text = _counter.ToString("D2");
     }
 
     public void IncrementCounter(int points = 1) {
