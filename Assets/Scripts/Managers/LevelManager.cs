@@ -28,7 +28,6 @@ public class LevelManager : MonoBehaviour {
 
         AudioManager.Instance.PlaySFX("spawn");
         _player.GetComponent<CharacterController>().enabled = true;
-
     }
 
     public void IncrementCounter(int points = 1) {
@@ -42,4 +41,6 @@ public class LevelManager : MonoBehaviour {
         PlayerPrefs.SetInt("score", _counter);
         GameObject.Find("FinalCount").GetComponent<TextMeshProUGUI>().text = $"{_counter.ToString("D2")}";
     }
+
+    public int getCurrentLevel() => _currentLevel;
 }
