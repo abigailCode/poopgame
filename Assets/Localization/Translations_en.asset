@@ -115,6 +115,10 @@ MonoBehaviour:
     m_Localized: Level {0}
     m_Metadata:
       m_Items: []
+  - m_Id: 91690270837342208
+    m_Localized: 'Music by:'
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds:
