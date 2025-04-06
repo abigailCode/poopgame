@@ -72,6 +72,14 @@ public class AudioManager : MonoBehaviour {
         if (countdownSource != null) countdownSource.Stop();
     }
 
+    public void PauseCountdown() {
+        if (countdownSource != null) countdownSource.Pause();
+    }
+
+    public void ResumeCountdown() {
+        if (countdownSource != null) countdownSource.UnPause();
+    }
+
     public void ChangeVolume(float value) {
         _sfxVolume = value;
         _musicSource.volume = value;

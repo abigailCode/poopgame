@@ -115,6 +115,10 @@ MonoBehaviour:
     m_Localized: Nivel {0}
     m_Metadata:
       m_Items: []
+  - m_Id: 91690270837342208
+    m_Localized: "M\xFAsica por:"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds:

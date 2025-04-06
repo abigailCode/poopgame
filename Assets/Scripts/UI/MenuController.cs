@@ -60,15 +60,13 @@ public class MenuController : MonoBehaviour {
                 menuPanel.SetActive(true);
                 menuPanel.GetComponent<Animator>().enabled = false;
                 break;
- 
-        
             case "GoToMenu":
                 if (Time.timeScale == 0) Time.timeScale = 1f;
                 SCManager.Instance.LoadScene("Menu");
                 break;
-            //case "Resume":
-            //    GameManager.Instance.ResumeGame();
-            //    break;
+            case "Resume":
+                GameManager.Instance.ResumeGame();
+                break;
             //case "LoadScene":
             //    GameManager.Instance.ResumeGame();
             //    SCManager.Instance.LoadScene(scene);
@@ -76,7 +74,7 @@ public class MenuController : MonoBehaviour {
             case "ExitGame":
 #if UNITY_EDITOR
                 UnityEditor.EditorApplication.isPlaying = false;
-#elif UNITY_STANDALONE || UNITY_WEBGL || UNITY_IOS || UNITY_ANDROID
+#elif UNITY_STANDALONE || UNITY_IOS || UNITY_ANDROID
     Application.Quit();
 #endif
                 break;

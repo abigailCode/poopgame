@@ -23,6 +23,36 @@ public class GameManager : MonoBehaviour {
         //if (!PlayerPrefs.HasKey("levelsPassed")) PlayerPrefs.SetInt("levelsPassed", 0);
     }
 
+    private void Update() {
+        if (Input.GetKeyDown(KeyCode.Escape)) {
+            if (isActive) PauseGame();
+            else ResumeGame();
+        }
+    }
+
+    public void PauseGame() {
+
+        GameObject hud = GameObject.Find("HUD");
+        if (hud == null) return;
+
+        GameObject pausePanel = hud.transform.Find("PausePanel").gameObject;
+        pausePanel.SetActive(true);
+        //StopAllCoroutines();
+        GameObject.Find("HUD").GetComponent<TimerBehaviour>().PauseCountdown();
+        isActive = false;
+    }
+
+    public void ResumeGame() {
+
+        GameObject hud = GameObject.Find("HUD");
+        if (hud == null) return;
+
+        GameObject pausePanel = hud.transform.Find("PausePanel").gameObject;
+        pausePanel.SetActive(false);
+        GameObject.Find("HUD").GetComponent<TimerBehaviour>().ResumeCountdown();
+        isActive = true;
+    }
+
     public void GameOver() {
 
         AudioManager.Instance.StopCountdown();
