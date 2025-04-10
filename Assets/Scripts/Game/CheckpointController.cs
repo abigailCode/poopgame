@@ -6,6 +6,7 @@ public class CheckpointController : MonoBehaviour {
 
     [SerializeField] GameObject mainCamera;
     [SerializeField] GameObject levelController;
+    [SerializeField] string nextLevelNumber;
 
 
     void Start() {
@@ -18,19 +19,30 @@ public class CheckpointController : MonoBehaviour {
 
     void NextLevel() {
 
-        int currentLevel = PlayerPrefs.GetInt("level", 0);
-        if (++currentLevel == GameManager.Instance.maxLevels) {
-            GameManager.Instance.GameWon();
-            return;
+        SCManager.Instance.LoadScene(nextLevelNumber);
+
+        if(nextLevelNumber == "Level2")
+        {
+           AudioManager.Instance.PlayMusic("mainTheme");
+        } else if (nextLevelNumber == "Level3") {
+            AudioManager.Instance.PlayMusic("victoryTheme");
+        }else if (nextLevelNumber == "Victory") {
+            AudioManager.Instance.PlayMusic("gameEnd");
         }
 
-        PlayerPrefs.SetInt("level", currentLevel);
-            
-        if (PlayerPrefs.GetInt("level") > PlayerPrefs.GetInt("levelsPassed", 0))
-            PlayerPrefs.SetInt("levelsPassed", PlayerPrefs.GetInt("level"));
-        PlayerPrefs.Save();
+        //int currentLevel = PlayerPrefs.GetInt("level", 0);
+        //if (++currentLevel == GameManager.Instance.maxLevels) {
+        //    GameManager.Instance.GameWon();
+        //    return;
+        //}
 
-        levelController.GetComponent<LevelManager>().SetLevel(currentLevel);
-        mainCamera.GetComponent<VerticalCameraFollow>().verticalOffset = 7f;
+        //PlayerPrefs.SetInt("level", currentLevel);
+
+        //if (PlayerPrefs.GetInt("level") > PlayerPrefs.GetInt("levelsPassed", 0))
+        //    PlayerPrefs.SetInt("levelsPassed", PlayerPrefs.GetInt("level"));
+        //PlayerPrefs.Save();
+
+        //levelController.GetComponent<LevelManager>().SetLevel(currentLevel);
+        //mainCamera.GetComponent<VerticalCameraFollow>().verticalOffset = 7f;
     }
 }

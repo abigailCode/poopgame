@@ -16,7 +16,7 @@ public class MenuController : MonoBehaviour {
 
 
     void Start() {
-        if (credits != null) AudioManager.Instance.PlayMusic("menuTheme"); //Play in the menu
+        if (credits != null) AudioManager.Instance.PlayMusic("victoryTheme"); //Play in the menu
         if (inputField != null) inputField.text = PlayerPrefs.GetString("username", "");
     }
 
@@ -30,8 +30,8 @@ public class MenuController : MonoBehaviour {
             case "StartGame":
                 if (Time.timeScale == 0) Time.timeScale = 1f;
 
-                AudioManager.Instance.PlayMusic("mainTheme");
-                SCManager.Instance.LoadScene("GameFinal");
+                AudioManager.Instance.PlayMusic("menuTheme");
+                SCManager.Instance.LoadScene("Level1");
                 break;
             case "RestartGame":
                 if (Time.timeScale == 0) Time.timeScale = 1f;

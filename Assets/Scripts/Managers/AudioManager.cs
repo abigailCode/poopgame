@@ -28,7 +28,7 @@ public class AudioManager : MonoBehaviour {
         _sfxClips["damage"] = Resources.Load<AudioClip>("SFX/SFX_Shot_SciFiGun");
         _sfxClips["fall"] = Resources.Load<AudioClip>("SFX/SFX_Player_Land");
         _sfxClips["water"] = Resources.Load<AudioClip>("SFX/SFX_WaterBottle_PickedUp");
-        _sfxClips["pickup"] = Resources.Load<AudioClip>("SFX/SFX_Reward");
+        _sfxClips["pickup"] = Resources.Load<AudioClip>("SFX/SFX_Pickupsound");
         _sfxClips["error"] = Resources.Load<AudioClip>("SFX/SFX_Error");
         _sfxClips["fart1"] = Resources.Load<AudioClip>("SFX/SFX_Fart1");
         _sfxClips["fart2"] = Resources.Load<AudioClip>("SFX/SFX_Fart2");
@@ -42,6 +42,7 @@ public class AudioManager : MonoBehaviour {
         _musicClips["introTheme"] = Resources.Load<AudioClip>("Music/BGM_Intro");
         _musicClips["victoryTheme"] = Resources.Load<AudioClip>("Music/BGM_Victory");
         _musicClips["gameOverTheme"] = Resources.Load<AudioClip>("Music/BGM_GaveOver");
+        _musicClips["gameEnd"] = Resources.Load<AudioClip>("Music/BGM_Third");
     }
 
     public void PlaySFX(string clipName) {
