@@ -1758,6 +1758,14 @@ PrefabInstance:
       propertyPath: levelController
       value: 
       objectReference: {fileID: 1970833591}
+    - target: {fileID: 2527243172336739928, guid: 1d04ccc707fed3f41bfcd554dfc45645, type: 3}
+      propertyPath: m_StringReference.m_TableEntryReference.m_KeyId
+      value: 355895357526016
+      objectReference: {fileID: 0}
+    - target: {fileID: 2527243172336739928, guid: 1d04ccc707fed3f41bfcd554dfc45645, type: 3}
+      propertyPath: m_StringReference.m_TableReference.m_TableCollectionName
+      value: GUID:7667e816ba5ce51408b29352c75b81ac
+      objectReference: {fileID: 0}
     - target: {fileID: 2949392862846492771, guid: 1d04ccc707fed3f41bfcd554dfc45645, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -1838,6 +1846,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3535202725668564166, guid: 1d04ccc707fed3f41bfcd554dfc45645, type: 3}
+      propertyPath: m_StringReference.m_TableEntryReference.m_KeyId
+      value: 355145852178432
+      objectReference: {fileID: 0}
+    - target: {fileID: 3535202725668564166, guid: 1d04ccc707fed3f41bfcd554dfc45645, type: 3}
+      propertyPath: m_StringReference.m_TableReference.m_TableCollectionName
+      value: GUID:7667e816ba5ce51408b29352c75b81ac
+      objectReference: {fileID: 0}
     - target: {fileID: 6225059284102659208, guid: 1d04ccc707fed3f41bfcd554dfc45645, type: 3}
       propertyPath: m_Name
       value: HUD
@@ -1845,6 +1861,14 @@ PrefabInstance:
     - target: {fileID: 8771708454705014613, guid: 1d04ccc707fed3f41bfcd554dfc45645, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: StartGame
+      objectReference: {fileID: 0}
+    - target: {fileID: 8803909985629095774, guid: 1d04ccc707fed3f41bfcd554dfc45645, type: 3}
+      propertyPath: m_StringReference.m_TableEntryReference.m_KeyId
+      value: 355094681669632
+      objectReference: {fileID: 0}
+    - target: {fileID: 8803909985629095774, guid: 1d04ccc707fed3f41bfcd554dfc45645, type: 3}
+      propertyPath: m_StringReference.m_TableReference.m_TableCollectionName
+      value: GUID:7667e816ba5ce51408b29352c75b81ac
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:

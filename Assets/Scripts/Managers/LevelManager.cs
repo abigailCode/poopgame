@@ -17,7 +17,19 @@ public class LevelManager : MonoBehaviour {
     int _counter = 0;
 
     private void Update() {
-        if (Input.GetKeyDown(KeyCode.F1)) ResetLevel();   
+        if (Input.GetKeyDown(KeyCode.F1)) ResetLevel();
+        if (Input.GetKeyDown(KeyCode.F6)) {
+            _currentLevel = 0;
+            ResetLevel();
+        }
+        if (Input.GetKeyDown(KeyCode.F7)) {
+            _currentLevel = 1;
+            ResetLevel();
+        }
+        if (Input.GetKeyDown(KeyCode.F8)) {
+            _currentLevel = 2;
+            ResetLevel();
+        }
     }
 
     public void SetLevel(int level) {
@@ -75,4 +87,5 @@ public class LevelManager : MonoBehaviour {
         AudioManager.Instance.PlaySFX("spawn");
         _player.GetComponent<PlayerMovementWithoutRotation>().ResetPlayerValues();
     }
+
 }

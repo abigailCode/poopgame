@@ -79,7 +79,7 @@ public class AudioManager : MonoBehaviour {
     public void ResumeCountdown() {
         if (countdownSource != null) {
             Destroy(countdownSource);
-            PlaySFX("countdown");
+            //PlaySFX("countdown");
             countdownSource.UnPause();
         }
     }
