@@ -53,9 +53,17 @@ public class GameManager : MonoBehaviour {
         isActive = true;
     }
 
-    public void GameOver() {
+    public void GameOver(int tooBig) {
         TakePicture("GameOverPanel");
-        GameObject.Find("HUD").GetComponent<TimerBehaviour>().Stop();
+        GameObject hud = GameObject.Find("HUD");
+        hud.GetComponent<TimerBehaviour>().Stop();
+
+        string objName = "Title (1)";
+        if (tooBig == 1) objName = "Title (2)";
+
+        GameObject gameOverPanel = hud.transform.Find("GameOverPanel").gameObject;
+        gameOverPanel.transform.Find(objName).gameObject.SetActive(true);
+
         Time.timeScale = 0f;
 
         //AudioManager.Instance.PlayMusic("gameOverTheme");
@@ -88,10 +96,6 @@ public class GameManager : MonoBehaviour {
     IEnumerator ShowPanel(GameObject panel) {
         yield return new WaitForSecondsRealtime(0.2f);
         panel.SetActive(true);
-        if (panel.name == "GameWonPanel") {
-            GameObject.Find("HUD").GetComponent<TimerBehaviour>().SaveTime();
-            //GameObject.Find("LevelController").GetComponent<LevelManager>().SaveCounter();
-        }
     }
 
     void CaptureScreenshot() {

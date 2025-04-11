@@ -130,7 +130,7 @@ public class PlayerMovement : MonoBehaviour
         else if (other.tag == "DeathTest")
         {
             AudioManager.Instance.PlaySFX("error");
-            GameManager.Instance.GameOver();
+            //GameManager.Instance.GameOver();
         }
 
     }

@@ -123,6 +123,14 @@ MonoBehaviour:
     m_Localized: "M\xFAsica y SFX"
     m_Metadata:
       m_Items: []
+  - m_Id: 93659135808307200
+    m_Localized: "Ta peque\xF1a bro"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 93659597970276352
+    m_Localized: "QU\xC9 GRANDE..."
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds:

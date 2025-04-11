@@ -8,6 +8,7 @@ TagManager:
   - DeathTest
   - PickUp
   - Gravity
+  - SizeCheck
   layers:
   - Default
   - TransparentFX

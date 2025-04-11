@@ -38,28 +38,40 @@ public class PlayerColisionBehaviour : MonoBehaviour {
                 jumpMultipliers[currentLevel],
                 true
             );
+        } else if (other.CompareTag("SizeCheck")) {
+            if (transform.localScale.x > 2.2f) {
+                GameManager.Instance.ShakeCamera(0.5f, 0.7f);
+                GameManager.Instance.GameOver(1);
+            }
         } else if (other.CompareTag("Gravity")) {
             movementScript.mainCamera.GetComponent<VerticalCameraFollow>().verticalOffset = -5f;
             StartCoroutine(Death());
 
             movementScript.jumpForce = 0;
             movementScript.fallVelocity = 0;
-            movementScript.gravity /= 10f / transform.localScale.x;
+            movementScript.gravity /= 17f / transform.localScale.x;
         } else if (other.CompareTag("Enemy")) {
-            AdjustPlayerAttributes(
-                scaleMultipliers[currentLevel],
-                gravityMultipliers[currentLevel],
-                jumpMultipliers[currentLevel],
-                false
-            );
+            if ((Time.time - _lastDamageTime) >= (damageInterval / 3)) {
+                GameManager.Instance.ShakeCamera(0.5f, 0.7f);
 
-            if (transform.localScale.x < 1f) GameManager.Instance.GameOver();
+                AudioManager.Instance.PlaySFX("damage");
+                _lastDamageTime = Time.time;
+
+                AdjustPlayerAttributes(
+                    scaleMultipliers[currentLevel],
+                    gravityMultipliers[currentLevel],
+                    jumpMultipliers[currentLevel],
+                    false
+                );
+            }
+
+            if (transform.localScale.x < 0.5f) GameManager.Instance.GameOver(0);
         }
     }
 
     private void OnTriggerStay(Collider other) {
         if (other.tag == "Enemy") {
-            if (Time.time - _lastDamageTime >= damageInterval) {
+            if ((Time.time - _lastDamageTime) >= damageInterval) {
                 GameManager.Instance.ShakeCamera(0.5f, 0.7f);
 
                 AudioManager.Instance.PlaySFX("damage");

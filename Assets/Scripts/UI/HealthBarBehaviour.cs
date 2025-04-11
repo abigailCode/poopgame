@@ -31,7 +31,7 @@ public class HealthBarBehaviour : MonoBehaviour {
         } else {
             AudioManager.Instance.PlaySFX("error");
             _hpAmount = 0;
-            GameManager.Instance.GameOver();
+            //GameManager.Instance.GameOver();
         }
     }
 

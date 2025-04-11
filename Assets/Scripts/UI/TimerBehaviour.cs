@@ -37,7 +37,7 @@ public class TimerBehaviour : MonoBehaviour {
                 yield return null;
             }
             _timerText.text = FormatTime(--remainingTime);
-            Debug.Log(isCountdownActive + " " + remainingTime + " " + _initialCountdownTime + " " + _timerText.text);
+            //Debug.Log(isCountdownActive + " " + remainingTime + " " + _initialCountdownTime + " " + _timerText.text);
             if (!isCountdownActive && remainingTime <= _initialCountdownTime)
                 ShowCountdown();
         }
@@ -95,7 +95,7 @@ public class TimerBehaviour : MonoBehaviour {
         countdown.GetComponent<Animator>().enabled = false;
         isCountdownActive = false;
         _countdownCoroutine = null;
-        GameManager.Instance.GameOver();
+        GameManager.Instance.GameOver(0);
     }
 
     public void StopCountdown() {
