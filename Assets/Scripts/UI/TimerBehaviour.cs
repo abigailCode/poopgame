@@ -102,6 +102,7 @@ public class TimerBehaviour : MonoBehaviour {
         AudioManager.Instance.StopCountdown();
         if (_countdownCoroutine != null) {
             StopCoroutine(_countdownCoroutine);
+            _countdownCoroutine = null;
             _countdownText.text = "";
         }
         GameObject.Find("Countdown").GetComponent<Animator>().enabled = false;
