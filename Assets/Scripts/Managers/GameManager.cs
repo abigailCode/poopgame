@@ -54,27 +54,39 @@ public class GameManager : MonoBehaviour {
     }
 
     public void GameOver(int objName) {
-        TakePicture("GameOverPanel");
+
         GameObject hud = GameObject.Find("HUD");
+
         hud.GetComponent<TimerBehaviour>().Stop();
 
         GameObject gameOverPanel = hud.transform.Find("GameOverPanel").gameObject;
+
+        if (objName == 3)
+        {
+
+        TakePicture("GameOverPanel");
+        }
+        else if(objName == 1)
+        {
+            gameOverPanel.transform.Find("SmallPoop").gameObject.SetActive(true);
+            gameOverPanel.gameObject.SetActive(true);
+
+        }
+        else if (objName == 2)
+        {
+            gameOverPanel.transform.Find("BigPoop").gameObject.SetActive(true);
+            gameOverPanel.gameObject.SetActive(true);
+        }
+
         gameOverPanel.transform.Find($"Title ({objName})").gameObject.SetActive(true);
 
         Time.timeScale = 0f;
 
-        //AudioManager.Instance.PlayMusic("gameOverTheme");
+    
+
+
     }
 
-    public void GameWon() {
-
-        GameObject.Find("HUD").GetComponent<TimerBehaviour>().Stop();
-
-        TakePicture("GameWonPanel");
-        //AudioManager.Instance.PlayMusic("gameWonTheme");
-
-        Time.timeScale = 0f;
-    }
 
     void TakePicture(string panelName) {
 
@@ -84,6 +96,7 @@ public class GameManager : MonoBehaviour {
 
         if (panel == null) return;
 
+        panel.transform.Find("Screenshot").gameObject.SetActive(true);
         _screenshotImage = panel.transform.Find("Screenshot").GetComponent<RawImage>();
         CaptureScreenshot();
         StartCoroutine(ShowPanel(panel));

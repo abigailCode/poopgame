@@ -71,11 +71,16 @@ public class TimerBehaviour : MonoBehaviour {
         countdown.GetComponent<Animator>().enabled = true;
         //AudioManager.Instance.PlaySFX("countdown");
 
-        if (_countdownCoroutine == null) _countdownCoroutine = StartCoroutine(CountdownCoroutine(countdown));
+        if(shortCount){
+            if (_countdownCoroutine != null) StopCoroutine(_countdownCoroutine);
+            _countdownCoroutine = null;
+        }
+
+        if (_countdownCoroutine == null) _countdownCoroutine = StartCoroutine(CountdownCoroutine(countdown, shortCount));
     }
 
-    IEnumerator CountdownCoroutine(GameObject countdown) {
-        int objName = _currentCountdown == 3 ? 1 : 3;
+    IEnumerator CountdownCoroutine(GameObject countdown, bool shortCount = false) {
+        int objName = shortCount ? 1 : 3;
         while (_currentCountdown > 0) {
             while (_isPaused) {
                 yield return null;

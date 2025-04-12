@@ -49,7 +49,7 @@ public class MenuController : MonoBehaviour {
             case "HideSettings":
                 settings.SetActive(false);
                 menuPanel.SetActive(true);
-                menuPanel.GetComponent<Animator>().enabled = false;
+                //menuPanel.GetComponent<Animator>().enabled = false;
                 break;
             case "ShowCredits":
                 credits.SetActive(true);
@@ -58,7 +58,7 @@ public class MenuController : MonoBehaviour {
             case "HideCredits":
                 credits.SetActive(false);
                 menuPanel.SetActive(true);
-                menuPanel.GetComponent<Animator>().enabled = false;
+                //menuPanel.GetComponent<Animator>().enabled = false;
                 break;
             case "GoToMenu":
                 if (Time.timeScale == 0) Time.timeScale = 1f;
