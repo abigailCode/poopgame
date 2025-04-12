@@ -36,7 +36,7 @@ public class MenuController : MonoBehaviour {
             case "RestartGame":
                 if (Time.timeScale == 0) Time.timeScale = 1f;
 
-                losePanel.SetActive(false);
+                SCManager.Instance.ReloadScene();
 
                 //AudioManager.Instance.PlayMusic("mainTheme");
                 //SCManager.Instance.LoadScene("Game");
