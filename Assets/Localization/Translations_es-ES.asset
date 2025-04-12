@@ -131,6 +131,10 @@ MonoBehaviour:
     m_Localized: "QU\xC9 GRANDE..."
     m_Metadata:
       m_Items: []
+  - m_Id: 93877908107591680
+    m_Localized: Demasiado lento...
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds:

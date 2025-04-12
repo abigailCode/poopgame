@@ -41,7 +41,7 @@ public class PlayerColisionBehaviour : MonoBehaviour {
         } else if (other.CompareTag("SizeCheck")) {
             if (transform.localScale.x > 2.2f) {
                 GameManager.Instance.ShakeCamera(0.5f, 0.7f);
-                GameManager.Instance.GameOver(1);
+                GameManager.Instance.GameOver(2);
             }
         } else if (other.CompareTag("Gravity")) {
             movementScript.mainCamera.GetComponent<VerticalCameraFollow>().verticalOffset = -5f;
@@ -65,7 +65,7 @@ public class PlayerColisionBehaviour : MonoBehaviour {
                 );
             }
 
-            if (transform.localScale.x < 0.5f) GameManager.Instance.GameOver(0);
+            if (transform.localScale.x < 0.5f) GameManager.Instance.GameOver(1);
         }
     }
 

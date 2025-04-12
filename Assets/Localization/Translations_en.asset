@@ -131,6 +131,10 @@ MonoBehaviour:
     m_Localized: SO BIG OMG!!!
     m_Metadata:
       m_Items: []
+  - m_Id: 93877908107591680
+    m_Localized: Too slow...
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds:

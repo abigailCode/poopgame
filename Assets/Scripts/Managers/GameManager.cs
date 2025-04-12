@@ -53,16 +53,13 @@ public class GameManager : MonoBehaviour {
         isActive = true;
     }
 
-    public void GameOver(int tooBig) {
+    public void GameOver(int objName) {
         TakePicture("GameOverPanel");
         GameObject hud = GameObject.Find("HUD");
         hud.GetComponent<TimerBehaviour>().Stop();
 
-        string objName = "Title (1)";
-        if (tooBig == 1) objName = "Title (2)";
-
         GameObject gameOverPanel = hud.transform.Find("GameOverPanel").gameObject;
-        gameOverPanel.transform.Find(objName).gameObject.SetActive(true);
+        gameOverPanel.transform.Find($"Title ({objName})").gameObject.SetActive(true);
 
         Time.timeScale = 0f;
 

@@ -28,7 +28,6 @@ public class TimerBehaviour : MonoBehaviour {
     }
 
     IEnumerator UpdateTimer() {
-        yield return new WaitForSeconds(1);
         _timerText.text = FormatTime(remainingTime);
 
         while (true) {
@@ -76,6 +75,7 @@ public class TimerBehaviour : MonoBehaviour {
     }
 
     IEnumerator CountdownCoroutine(GameObject countdown) {
+        int objName = _currentCountdown == 3 ? 1 : 3;
         while (_currentCountdown > 0) {
             while (_isPaused) {
                 yield return null;
@@ -95,7 +95,7 @@ public class TimerBehaviour : MonoBehaviour {
         countdown.GetComponent<Animator>().enabled = false;
         isCountdownActive = false;
         _countdownCoroutine = null;
-        GameManager.Instance.GameOver(0);
+        GameManager.Instance.GameOver(objName);
     }
 
     public void StopCountdown() {
